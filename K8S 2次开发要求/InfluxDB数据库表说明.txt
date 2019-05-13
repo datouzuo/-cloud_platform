@@ -1,0 +1,18 @@
+跟K8S dashboard数据有关的表有8张，分别为：
+
+1、cpu/node_capacity表：记录物理节点的CPU核数，PU_allocation.json的Total值来自与此表中所有节点值的平均值。（搞定）
+
+2、cpu/node_reservation表：物理节点的CPU资源分配占比，PU_allocation.json的Request值来自与此表中所有节点值的平均值。（搞定）
+
+3、cpu/usage_rate表：此表信息量丰富，记录了节点（type类型为node）、容器（type类型为pod）和集群（type类型为cluster）的CPU使用率。value/1000为显示值。（数值转换完成）
+
+4、memory/node_capacity表：物理节点内存总量，value单位为字节。Memory_allocation.json的Total值来自与此表中所有节点值的平均值。（搞定）
+
+5、memory/node_reservation表：物理节点的内存资源使用占比，Memory_allocation.json的Request值来自与此表中所有节点值的平均值。（搞定）
+
+6、memory/usage表:此表信息量丰富，记录了节点（type类型为node）、容器（type类型为pod）和集群（type类型为cluster）的内存使用量。value单位为字节。
+
+7、restart_count表:容器重启次数表。
+
+8、uptime表：节点（type类型为node）和容器（type类型为pod）的在线时长。value单位为毫秒。
+SELECT  mean("b.value") ,mean("a.value"),mean("c.value"),mean("e.value"),mean("d.uptime") FROM "cpu/node_capacity a","cpu/usage_rate b","memory/usage c","uptime d","memory/node_capacity e" WHERE "a.nodename"= "b.nodename"="c.nodename"="d.nodename"="e.nodename" AND time > now() - 1m GROUP BY nodename

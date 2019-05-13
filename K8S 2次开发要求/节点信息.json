@@ -1,0 +1,47 @@
+﻿/*
+节点信息
+*/
+/*
+节点信息从截图中看只有7项值，而此处为11项，建议改为我修改后的7项
+此处数据来自于1、3、6、8号表的联合查询，联合查询的键值为Node_Name
+具体修改和数据来源见下面内容
+*/
+[
+	{
+	
+		"Node_Name": "k8s-node1",
+		"Ready": "True",	  
+		cPU_count：	24000
+        "CPU_request_rate": 1.04,数据来自于3号表的value字段（显示值为value/1000）
+       "Memory_request_value": 0,建议修改为Memory_used，数据来自于6号表的value字段
+        "Memory_limit_rate": 0,建议修改为Memory_num，数据来自于4号表的value字段
+        "Created_time": 23数据来自于8号表的value字段
+	},
+	{
+		"Node_Name": "k8s-node1",
+		"Ready": "True",
+		"CPU_request_value": 0.25,
+        "CPU_request_rate": 1.04,
+		"CPU_limit_value": 0,
+        "CPU_limit_rate": 0,
+		"Memory_request_value": 0,
+        "Memory_request_rate": 0,
+		"Memory_limit_value": 0,
+        "Memory_limit_rate": 0,
+        "Created_time": 23
+	},
+    {
+		"Node_Name": "k8s-master",
+		"Ready": "True",
+		"CPU_request_value": 1.00,
+        "CPU_request_rate": 4.17,
+		"CPU_limit_value": 0,
+        "CPU_limit_rate": 0,
+		"Memory_request_value": 340,
+        "Memory_request_rate": 0.71,
+		"Memory_limit_value": 140,
+        "Memory_limit_rate": 0.29,
+        "Created_time": 23
+	}
+]
+localhost:8080/k8s/node/message.json

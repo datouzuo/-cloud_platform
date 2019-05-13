@@ -1,0 +1,38 @@
+﻿/*
+容器组信息
+*/
+/*
+容器信息项数与截图中项数吻合，但有错误。
+此处数据来自于3、6、7、8号表的联合查询，联合查询的键值为Pod_Name
+具体修改和数据来源见下面内容
+*/
+[
+	{
+		"ContainerGroup_Name": "httpd-7667fd7899-dl48r",不是ContainerGroup_Name，应是Pod_name，Pod_name值在3、6、7、8号表里都有
+		"Node_Name": "k8s-node2",此处数据3、6、7、8号表都有
+		"Status": "Running",定值
+        "Restarted": 2,此处数据来自于7号表的value字段
+		"Created_time": 21,数据来自于8号表的value字段
+        "CPU": 0,数据来自于3号表的value字段（显示值为value/1000）
+		"Memory": 15434数据来自于6号表的value字段
+	},
+	{
+		"ContainerGroup_Name": "httpd-7667fd7899-mkrx5",
+		"Node_Name": "k8s-node1",
+		"Status": "Running",
+        "Restarted": 2,
+		"Created_time": 21,
+        "CPU": 0,
+		"Memory": 20801
+	},
+    {
+		"ContainerGroup_Name": "httpd-7667fd7899-nfdwg",
+		"Node_Name": "k8s-node2",
+		"Status": "Running",
+        "Restarted": 2,
+		"Created_time": 21,
+        "CPU": 0,
+		"Memory": 21016
+	}
+]
+http://localhost:8080/k8s/pod/message.json

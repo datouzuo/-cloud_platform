@@ -1,0 +1,16 @@
+﻿/*
+具体某个节点中的已分配资源
+*/
+[
+	{
+		"Allocation": 5,
+		"Total": 110
+	}
+]
+
+/*
+Allocation数据来自于表3中某一个时刻，type类型为pod的记录条数；
+Total数据为定值：110
+*/
+接口：
+http://222.24.63.59:9068/k8s/cpu/usage_rate/pods_allocation.json
